@@ -1,4 +1,4 @@
-# vue-lesson
+# gm_resume_template
 
 ## Project setup
 ```
