@@ -1,12 +1,425 @@
 {
-    
     "container": {
-        "width": "500",
-        "height": "500"
+        "width": 550,
+        "height": 1350
     },
     "blocks": [
-        {"top":100,"left":100,"zIndex":1,"focus":false,"key":"text"},
-        {"top":100,"left":200,"zIndex":1,"focus":false,"key":"button"},
-        {"top":200,"left":200,"zIndex":1,"focus":false,"key":"input"}
+        {
+            "top": 28.5,
+            "left": 226,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "郭明简历",
+                "color": "#DE2222",
+                "size": "24px"
+            },
+            "model": {},
+            "width": 96,
+            "height": 35,
+            "focus": false
+        },
+        {
+            "top": 79,
+            "left": 12.5,
+            "zIndex": 1,
+            "key": "divider",
+            "alignCenter": false,
+            "props": {
+                "text": "个人信息",
+                "size": "20px"
+            },
+            "model": {},
+            "width": 515,
+            "height": 30,
+            "focus": false
+        },
+        {
+            "top": 128.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "性别:"
+            },
+            "model": {},
+            "width": 36,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 128.5,
+            "left": 83,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "男"
+            },
+            "model": {},
+            "width": 16,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 128.5,
+            "left": 290,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "年龄:"
+            },
+            "model": {},
+            "width": 36,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 128.5,
+            "left": 340,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "21"
+            },
+            "model": {},
+            "width": 18,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 162.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "手机:"
+            },
+            "model": {},
+            "width": 36,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 162.5,
+            "left": 83,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "17812027244"
+            },
+            "model": {},
+            "width": 97,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 162.5,
+            "left": 290,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "邮箱:"
+            },
+            "model": {},
+            "width": 36,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 162.5,
+            "left": 340,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "2994435150@qq.com"
+            },
+            "model": {},
+            "width": 159,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 199.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "专业:"
+            },
+            "model": {},
+            "width": 36,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 199.5,
+            "left": 83,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "软件工程"
+            },
+            "model": {},
+            "width": 64,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 199.5,
+            "left": 290,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "岗位:"
+            },
+            "model": {},
+            "width": 36,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 199.5,
+            "left": 340,
+            "zIndex": 1,
+            "key": "text",
+            "alignCenter": false,
+            "props": {
+                "text": "前端工程师"
+            },
+            "model": {},
+            "width": 80,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 246,
+            "left": 12.5,
+            "zIndex": 1,
+            "key": "divider",
+            "alignCenter": false,
+            "props": {
+                "text": "工作经历",
+                "size": "20px"
+            },
+            "model": {},
+            "width": 515,
+            "height": 30,
+            "focus": false
+        },
+        {
+            "top": 292,
+            "left": 35,
+            "zIndex": 1,
+            "key": "button",
+            "alignCenter": false,
+            "props": {
+                "size": "small",
+                "type": "success",
+                "text": "武汉茂进物流科技"
+            },
+            "model": {},
+            "width": 128,
+            "height": 32,
+            "focus": false
+        },
+        {
+            "top": 292,
+            "left": 226,
+            "zIndex": 1,
+            "key": "button",
+            "alignCenter": false,
+            "props": {
+                "text": "2021.6~2022.2",
+                "type": "success",
+                "size": "small"
+            },
+            "model": {},
+            "width": 112,
+            "height": 32,
+            "focus": false
+        },
+        {
+            "top": 292,
+            "left": 391,
+            "zIndex": 1,
+            "key": "button",
+            "alignCenter": false,
+            "props": {
+                "size": "small",
+                "type": "success",
+                "text": "Java开发"
+            },
+            "model": {},
+            "width": 81,
+            "height": 32,
+            "focus": false
+        },
+        {
+            "top": 344,
+            "left": 12.5,
+            "zIndex": 1,
+            "key": "divider",
+            "alignCenter": false,
+            "props": {
+                "text": "专业技能",
+                "size": "20px"
+            },
+            "model": {},
+            "width": 515,
+            "height": 30,
+            "focus": false
+        },
+        {
+            "top": 394.5,
+            "left": 124,
+            "zIndex": 1,
+            "key": "textarea",
+            "alignCenter": false,
+            "props": {
+                "text": "能够比较熟练的使用 JavaScript,对其性能优化有自己的了解,对基本数据类型和引用数据类型的API比较深刻的了解。会使用JavaScript做前端监控,发送网络请求。对于效率高的代码会通过代码仓库记录下来,并搭建前端脚手架进行代码生成,对代码可复用性和整洁性有自己独到的理解。对函数柯里化，装饰器和Promise有自己的理解。对于发布订阅者模式和观察者模式有自己的理解。"
+            },
+            "model": {},
+            "width": 400,
+            "height": 162,
+            "focus": false
+        },
+        {
+            "top": 394.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "boldtext",
+            "alignCenter": false,
+            "props": {
+                "text": "JavaScript:"
+            },
+            "model": {},
+            "width": 82,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 566.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "boldtext",
+            "alignCenter": false,
+            "props": {
+                "text": "TypeScript:"
+            },
+            "model": {},
+            "width": 83,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 566.5,
+            "left": 124,
+            "zIndex": 1,
+            "key": "textarea",
+            "alignCenter": false,
+            "props": {
+                "text": "比较熟练的掌握typescript的各种语法特性，会使用typescript结合react+webpack/vue+webpack构建高可用性的web项目。会使用typescript编写高可读性的代码。"
+            },
+            "model": {},
+            "width": 400,
+            "height": 100,
+            "focus": false
+        },
+        {
+            "top": 666.5,
+            "left": 124,
+            "zIndex": 1,
+            "key": "textarea",
+            "alignCenter": false,
+            "props": {
+                "text": "会通过CSS绘制各种常用的动画效果和网页布局,有较为丰富的CSS编写经验,能够很高效的根据需求绘制出复用性高，可读性强，不繁琐的CSS代码。对SCSS和Less等主流的CSS框架有自己的理解。会使用SCSS规范网页布局和达到颜色的统一性。对于网页设计有自己独到的理解。"
+            },
+            "model": {},
+            "width": 400,
+            "height": 139,
+            "focus": false
+        },
+        {
+            "top": 666.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "boldtext",
+            "alignCenter": false,
+            "props": {
+                "text": "CSS:"
+            },
+            "model": {},
+            "width": 33,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 813.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "boldtext",
+            "alignCenter": false,
+            "props": {
+                "text": "Vue:"
+            },
+            "model": {},
+            "width": 31,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 813.5,
+            "left": 124,
+            "zIndex": 1,
+            "key": "textarea",
+            "alignCenter": false,
+            "props": {
+                "text": "对其底层原理有自己的了解,对Vue2.0和Vue3.0的底层源码有自己的解读并且自己简单实现过一遍。对Vue-router有自己的了解。会使用Vuex存储网页缓存数据。对使用TSX开发Vue组件有自己的了解。读过Vxe-table的源码并且自己根据他的逻辑写过类似的demo。仔细读过Vue官方文档。对于Vue过渡动画。路由首位。vite plugin插件编写有自己的理解。会使用VUEX编写流式计算Bloc组件，提升系统渲染效能，减少网络请求发送。对大规模数据处理有自己的理解。了解微前端框架qiankun。会用qiankun搭建Vue基站应用注册其他JS框架编写的代码。并实现沙箱数据隔离和基站数据交互。会使用ES6的fetchAPI发送网络请求。会使用vue具名插槽编写高可用性的组件库"
+            },
+            "model": {},
+            "width": 400,
+            "height": 302,
+            "focus": false
+        },
+        {
+            "top": 1123.5,
+            "left": 35,
+            "zIndex": 1,
+            "key": "boldtext",
+            "alignCenter": false,
+            "props": {
+                "text": "Flutter:"
+            },
+            "model": {},
+            "width": 54,
+            "height": 23,
+            "focus": false
+        },
+        {
+            "top": 1123.5,
+            "left": 124,
+            "zIndex": 1,
+            "key": "textarea",
+            "alignCenter": false,
+            "props": {
+                "text": "能够使用Flutter做跨平台开发,对其底层的绘制原理有自己的了解,使用Flutter开发过各种类型的跨端项目。对Bloc响应式编程有自己的理解。对Provider和GetX非常了解。能够比较熟练的使用Flutter开发windows应用"
+            },
+            "model": {},
+            "width": 400,
+            "height": 100,
+            "focus": false
+        }
     ]
 }

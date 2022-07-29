@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: 'dist', //build输出目录
+  outputDir: 'docs', //build输出目录
   publicPath: './', //相对路径
   productionSourceMap: false,
   assetsDir: 'assets', //静态资源目录

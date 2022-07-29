@@ -1,0 +1,16 @@
+.divider-container{
+    width: 500px;
+    border-left: 5px solid red;
+    border-bottom: 1px solid red;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.resume-textarea{
+    width: 400px;
+    min-height: 100px;
+    white-space: pre-line;
+    text-overflow: ellipsis;
+}
+.divider-render{
+    width: 200px;
+}

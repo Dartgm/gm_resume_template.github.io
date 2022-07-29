@@ -1,8 +1,8 @@
 import deepcopy from "deepcopy";
 import { onUnmounted } from "vue";
-import { events } from "@/utils/events";
- 
-export function useCommand(data) {
+import { events } from "./events";
+
+export function useCommand(data, focusData) {
     const state = { // 前进后退需要指针
         current: -1, // 前进后退的索引值
         queue: [], //  存放所有的操作命令
@@ -12,14 +12,14 @@ export function useCommand(data) {
     }
     const registry = (command) => {
         state.commandArray.push(command);
-        state.commands[command.name] = () => { // 命令名字对应执行函数
-            const { redo, undo } = command.execute();
+        state.commands[command.name] = (...args) => { // 命令名字对应执行函数
+            const { redo, undo } = command.execute(...args);
             redo();
             if (!command.pushQueue) { // 不需要放到队列中直接跳过即可
                 return
             }
             let { queue, current } = state;
- 
+
             // 如果先放了 组件1 -》 组件2 => 组件3 =》 组件4 - -》 组件3
             // 组件1 -> 组件3
             if (queue.length > 0) {
@@ -96,6 +96,132 @@ export function useCommand(data) {
             }
         }
     });
+    // 带有历史记录常用的模式 
+    registry({
+        name: 'updateContainer', // 更新整个容器
+        pushQueue: true,
+        execute(newValue) {
+            let state = {
+                before: data.value, // 当前的值
+                after: newValue // 新值
+            }
+            return {
+                redo: () => {
+                    data.value = state.after
+                },
+                undo: () => {
+                    data.value = state.before
+                }
+            }
+        }
+    })
+
+
+
+    registry({
+        name: 'updateBlock', // 更新某个组件
+        pushQueue: true,
+        execute(newBlock, oldBlock) {
+            let state = {
+                before: data.value.blocks,
+                after: (() => {
+                    let blocks = [...data.value.blocks]; // 拷贝一份用于新的block
+                    const index = data.value.blocks.indexOf(oldBlock); // 找老的 需要通过老的查找
+                    if (index > -1) {
+                        blocks.splice(index, 1, newBlock)
+                    }
+                    return blocks;
+                })()
+            }
+            return {
+                redo: () => {
+                    data.value = { ...data.value, blocks: state.after }
+                },
+                undo: () => {
+                    data.value = { ...data.value, blocks: state.before }
+                }
+            }
+        }
+    })
+
+
+    registry({ // 置顶操作
+        name: 'placeTop',
+        pushQueue: true,
+        execute() {
+            let before = deepcopy(data.value.blocks);
+            let after = (() => { // 置顶就是在所有的block中找到最大的
+                let { focus, unfocused } = focusData.value;
+                let maxZIndex = unfocused.reduce((prev, block) => {
+                    return Math.max(prev, block.zIndex);
+                }, -Infinity);
+                focus.forEach(block => block.zIndex = maxZIndex + 1); // 让当前选中的比最大的+1 即可
+                return data.value.blocks
+            })()
+
+            return {
+                undo: () => {
+                    // 如果当前blocks 前后一致 则不会更新
+                    data.value = { ...data.value, blocks: before }
+                },
+                redo: () => {
+                    data.value = { ...data.value, blocks: after }
+                }
+            }
+        }
+    })
+    registry({ // 置底操作
+        name: 'placeBottom',
+        pushQueue: true,
+        execute() {
+            let before = deepcopy(data.value.blocks);
+            let after = (() => { // 置顶就是在所有的block中找到最大的
+                let { focus, unfocused } = focusData.value;
+                let minZIndex = unfocused.reduce((prev, block) => {
+                    return Math.min(prev, block.zIndex);
+                }, Infinity) - 1;
+                // 不能直接 - 1 因为index 不能出现负值 负值就看不到组件了
+
+                if (minZIndex < 0) { // 这里如果是赋值则让没选中的向上 ，自己变成0
+                    const dur = Math.abs(minZIndex);
+                    minZIndex = 0;
+                    unfocused.forEach(block => block.zIndex += dur)
+                }
+                // 让当前选中的比最大的+1 即可
+
+                focus.forEach(block => block.zIndex = minZIndex); // 控制选中的值
+                return data.value.blocks
+            })()
+
+            return {
+                undo: () => {
+                    // 如果当前blocks 前后一致 则不会更新
+                    data.value = { ...data.value, blocks: before }
+                },
+                redo: () => {
+                    data.value = { ...data.value, blocks: after }
+                }
+            }
+        }
+    })
+    registry({
+        name: 'delete', // 删除
+        pushQueue: true,
+        execute() {
+            let state = {
+                before: deepcopy(data.value.blocks), // 当前的值
+                after: focusData.value.unfocused // 选中的都删除了 留下的都是没选中的
+            }
+            return {
+                redo: () => {
+                    data.value = { ...data.value, blocks: state.after }
+                },
+                undo: () => {
+                    data.value = { ...data.value, blocks: state.before }
+                }
+            }
+        }
+    })
     const keyboardEvent = (() => {
         const keyCodes = {
             90: 'z',
@@ -107,7 +233,7 @@ export function useCommand(data) {
             if (ctrlKey) keyString.push('ctrl');
             keyString.push(keyCodes[keyCode]);
             keyString = keyString.join('+');
- 
+
             state.commandArray.forEach(({ keyboard, name }) => {
                 if (!keyboard) return; // 没有键盘事件
                 if (keyboard === keyString) {
@@ -125,12 +251,12 @@ export function useCommand(data) {
         return init
     })();
     (() => {
- 
+
         // 监听键盘事件
         state.destroyArray.push(keyboardEvent())
         state.commandArray.forEach(command => command.init && state.destroyArray.push(command.init()))
     })();
- 
+
     onUnmounted(() => { // 清理绑定的事件
         state.destroyArray.forEach(fn => fn && fn());
     })
